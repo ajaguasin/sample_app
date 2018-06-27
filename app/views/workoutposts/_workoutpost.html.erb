@@ -1,0 +1,13 @@
+<li id="workoutpost-<%= workoutpost.id %>">
+  <span class="user"><%= link_to workoutpost.user.name, workoutpost.user %></span>
+  <span class="content">Description: <%= workoutpost.content %></span>
+  <span class="mood">Mood: <%= workoutpost.mood %></span>
+  <span class="length">Length: <%= workoutpost.length %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(workoutpost.created_at) %> ago.
+    <% if current_user?(workoutpost.user) %>
+      <%= link_to "delete", workoutpost, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

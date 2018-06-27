@@ -7,4 +7,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.workoutposts.any? %>
+      <h3>Workout Logs (<%= @user.workoutposts.count %>)</h3>
+      <ol class="workoutposts">
+        <%= render @workoutposts %>
+      </ol>
+      <%= will_paginate @workoutposts %>
+    <% end %>
+  </div>
 </div>

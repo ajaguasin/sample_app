@@ -26,3 +26,11 @@ User.create!(name:  name,
       activated: true,
       activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  mood = Faker::Lorem.sentence(1)
+  length = Faker::Lorem.sentence(1)
+  users.each { |user| user.workoutposts.create!(content: content, mood: mood, length: length) }
+end
